@@ -24,28 +24,18 @@ def lambda_handler(event, context):
         text2 = "\n Time : " +Moment +"\n IP : " +IP    
         TEXT = text1 + text2
     
-    #send mail or not
-    if TEMP[1:-1] >= "28.0" or TEMP[1:-1] <= "20.0" or HUMI[1:-1] >= "60.0" or HUMI[1:-1] <= "28.0":
-        gmail_user = "alert.sender@your.email.com"
-        gmail_pwd = "yourEmailPassword"
-        FROM = "alert.sender.name"
-        #TO = event['recipient'] if type(recipient) is list else [recipient]
-        TO = ["alert.receiver@your.email.com"]
-        SUBJECT = "Sensor Alert from : " +dName
-        # Prepare actual message
-        message = """From: %s\nTo: %s\nSubject: %s\n\n%s
-        """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
-        try:
-            server = smtplib.SMTP("smtp.gmail.com", 587)
-            server.ehlo()
-            server.starttls()
-            server.login(gmail_user, gmail_pwd)
-            server.sendmail(FROM, TO, message)
-            server.close()
-            print("successfully sent the mail")
-            print(dName + " Temperature : " +TEMP + " Humidity : " +HUMI +"\n Time : " +Moment)
-        except:
-            print("failed to send mail")
+    #HUMI[1:-1]
+    if TEMP[1:-1] < "23.0" :
+        print("YEŞİL LED")
+    elif  TEMP[1:-1] > "27.0" :
+         print("KIRMIZI LED")
+    
+    elif  HUMI[1:-1] < "50.0" :
+         print("YEŞİL LED")
+    
+     elif  HUMI[1:-1] > "60.0" :
+         print("KIRMIZI LED")
+
     else:
         print("Status normal. /n" + TEXT)
     
