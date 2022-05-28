@@ -6,13 +6,13 @@
 
 import json
 import sys
-import time
+import time // Zaman kutuphanesini dahil ettik
 import datetime
 from datetime import datetime, timedelta
 import Adafruit_DHT
 import socket
 import subprocess
-
+ 
 # Type of sensor, could be Adafruit_DHT.DHT11, Adafruit_DHT.DHT22, or Adafruit_DHT.AM2302.
 DHT_TYPE = Adafruit_DHT.DHT22
 
@@ -47,7 +47,7 @@ TempIn ="%.4f" %temp
 HumiIn ="%.4f" %humidity
 #covert to json
 json_map = {}
-json_map["DeviceName"] = "YourDeviceName"
+json_map["DeviceName"] = "ProjectSelcuk"
 json_map["TempIn"] = TempIn
 json_map["HumiIn"] = HumiIn
 json_map["Moment"] = DATE
