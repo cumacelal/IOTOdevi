@@ -60,4 +60,4 @@ print result
 
 print "\nstart use curl\n"
 subprocess.call(["curl", "-H", "Content-Type:application/json", "-X", "POST", "-d", result, "http://InvokeURLofYourAPIgatewayDeployStage"], stdout=True)
-print "upload DONE"
+print "Veriler Kayıt Edildi"
